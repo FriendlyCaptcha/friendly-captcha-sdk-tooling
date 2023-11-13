@@ -17,9 +17,9 @@ jobs:
         with:
           go-version: "^1.21"
       - name: GoReleaser
-        working-directory: friendly-captcha-sdk-testserver
         uses: goreleaser/goreleaser-action@v2
         with:
+          workdir: friendly-captcha-sdk-testserver
           distribution: goreleaser
           version: latest
           args: release --rm-dist
