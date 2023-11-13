@@ -35,10 +35,20 @@ You can pass some optional settings:
 ## Adding new sdk tests
 The expected behavior of the SDK is defined in the [test_cases.json](./fixtures/test_cases.json) file.
 
-## Minting a release
+## Development
+
+### Minting a release
 
 Releases are built using Github Actions. To mint a local release, install `goreleaser` and run
 
-```
+```shell
 goreleaser --snapshot --skip=publish --clean
+```
+
+### Publishing to docker
+
+```shell
+docker login
+docker buildx create --use
+docker buildx build --platform=linux/amd64,linux/arm64 -t friendlycaptcha/sdk-testserver:latest . --push
 ```

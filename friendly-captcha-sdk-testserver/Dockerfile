@@ -6,5 +6,4 @@ COPY . .
 
 RUN go mod download
 
-# Use the go run command to start the server
-CMD ["go", "run", "main.go", "serve", "--port", "1090"]
+CMD ["go", "run", "main.go", "serve"]
