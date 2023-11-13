@@ -1,0 +1,5 @@
+# built binary
+friendly-captcha-sdk-testserver
+
+.DS_Store
+*.log
