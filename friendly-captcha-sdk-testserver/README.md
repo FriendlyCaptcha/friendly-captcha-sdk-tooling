@@ -3,6 +3,16 @@ This module is dedicated to testing the integration of Friendly Captcha SDKs wit
 
 The goal is to unify the behavior of server side SDK implementations, especially when the API returns errors.
 
+## Installation
+There are different ways to use this tool.
+
+* Download and unpack the binary from the latest version on the [**releases**](https://github.com/FriendlyCaptcha/friendly-captcha-sdk-tooling/releases) page.
+* Install using Go
+  ```
+  go install github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver@latest
+  ```
+* Build it yourself (clone this repo, use `go run main.go`).
+
 ## How to run the server
 ```shell
 # With a binary you downloaded from Github Releases
