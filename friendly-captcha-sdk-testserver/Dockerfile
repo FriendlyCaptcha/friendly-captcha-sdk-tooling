@@ -9,9 +9,8 @@ RUN go mod verify
 RUN CGO_ENABLED=0 go build -o ./friendly-captcha-sdk-testserver
 RUN chmod +x ./friendly-captcha-sdk-testserver
 
-CMD ["./friendly-captcha-sdk-testserver", "serve"]
-
 FROM scratch
 WORKDIR /opt
 COPY --from=builder /app/friendly-captcha-sdk-testserver .
-ENTRYPOINT ["/opt/friendly-captcha-sdk-testserver", "serve"]
+
+CMD ["/opt/friendly-captcha-sdk-testserver", "serve"]
