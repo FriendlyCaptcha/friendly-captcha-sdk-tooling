@@ -6,6 +6,7 @@ import (
 	"net/http"
 
 	"github.com/alecthomas/kong"
+	"github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver/buildinfo"
 	"github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver/fixtures"
 	"github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver/model"
 	"github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver/wire"
@@ -22,6 +23,7 @@ var CLI struct {
 		Port  int    `help:"Port to listen on." default:"1090"`
 		Tests string `help:"Path to the test cases (JSON) file, leave empty to use the embedded tests." default:""`
 	} `cmd:"" help:"Start the SDK test server."`
+	Version struct{} `cmd:"" help:"Print version information and exit."`
 }
 
 func main() {
@@ -29,6 +31,8 @@ func main() {
 	switch ctx.Command() {
 	case "serve":
 		serve(CLI.Serve.Port, CLI.Serve.Tests)
+	case "version":
+		fmt.Println(buildinfo.FullVersion())
 	default:
 		panic(ctx.Command())
 	}
