@@ -13,7 +13,7 @@ There are different ways to use this tool.
   ```
 * Build it yourself (clone this repo, use `go run main.go`).
 
-## How to run the server
+## Running the server
 ```shell
 # With a binary you downloaded from Github Releases
 friendly-captcha-sdk-testserver serve
@@ -27,8 +27,9 @@ This starts the SDK test server on port `1090`.
 Next, run the tests that talk to this test server in the SDK implementation.
 
 ### Command-line options
+You can pass some optional settings:
 
-* `--port 1234` run the server on a custom por
+* `--port 1234` run the server on a custom port.
 * `--tests some/path/my_test_cases_file.json` serve the test cases in a custom fixtures file.
 
 ## Adding new sdk tests
