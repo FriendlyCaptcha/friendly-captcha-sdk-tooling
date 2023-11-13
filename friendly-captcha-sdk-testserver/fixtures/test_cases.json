@@ -1,0 +1,405 @@
+{
+  "version": 1,
+  "tests": [
+    {
+      "name": "success",
+      "response": "2b5ec269-2890-4df2-adbd-45be9974131e",
+      "strict": false,
+      "siteverify_response": {
+        "success": true,
+        "data": {
+          "challenge": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "origin": "https://example.com"
+          }
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "auth_required",
+      "response": "50aa9a4c-c42a-4086-b313-6f045af3a9c7",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_required",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 401,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "auth_invalid",
+      "response": "5c05b5d9-1e08-4331-93ef-10aded015949",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 401,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "sitekey_invalid",
+      "response": "c0cf28c8-891b-4643-989d-47899339e5e7",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "sitekey_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "response_missing",
+      "response": "c2c56fd2-e40a-447d-a367-7c51749ba754",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_missing",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "response_invalid",
+      "response": "dbb1a8f8-3175-46f9-b492-46a3cc2dfb08",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "response_timeout",
+      "response": "0f09e51a-32d8-4a07-bbc7-7c1bc602b2c0",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_timeout",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "response_duplicate",
+      "response": "c7386654-001e-4128-b12e-de6397327949",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_duplicate",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "bad_request",
+      "response": "689ca2eb-f1e9-42e5-8245-2e8c9ecb1974",
+      "strict": false,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "bad_request",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "success_strict",
+      "response": "720d50fd-1e47-4a2d-bc94-f5eeda259f7b",
+      "strict": true,
+      "siteverify_response": {
+        "success": true,
+        "data": {
+          "challenge": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "origin": "https://example.com"
+          }
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "auth_required strict",
+      "response": "92159780-4b91-4f07-abb5-706b44a040ab",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_required",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 401,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "auth_invalid strict",
+      "response": "2043ec0e-4ea8-4bdc-bd05-bfd9aae850fa",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 401,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "sitekey_invalid strict",
+      "response": "e541289b-c1b8-40ff-913f-015d81955e3a",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "sitekey_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "response_missing strict",
+      "response": "224d07a4-e480-4bcb-8c80-be7705c04430",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_missing",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "response_invalid strict",
+      "response": "3362a265-7f08-47d4-adc6-5f53263d9a96",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_invalid",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "response_timeout strict",
+      "response": "ae1e9507-fc44-4a31-8ba1-3ee504284a5a",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_timeout",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "response_duplicate strict",
+      "response": "dad0d422-3208-43c6-9dad-e27e6d2d80e3",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "response_duplicate",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "bad_request strict",
+      "response": "e9c0f577-6961-40b2-96da-b34587f024af",
+      "strict": true,
+      "siteverify_response": {
+        "success": false,
+        "error": {
+          "error_code": "bad_request",
+          "detail": ""
+        }
+      },
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "bad_response_200",
+      "response": "e19d0c68-1f03-4334-beb2-768d17b96f47",
+      "strict": false,
+      "siteverify_response": "<html><body>Something went horribly wrong</body></html>",
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "bad_response_200_strict",
+      "response": "5fbd3f78-8175-43dd-ac80-4f2bd5f29c49",
+      "strict": true,
+      "siteverify_response": "<html><body>Something went horribly wrong</body></html>",
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "bad_response_500",
+      "response": "12f35538-ed0e-43e4-9504-3379a22983bf",
+      "strict": false,
+      "siteverify_response": "<html><body>Something went horribly wrong</body></html>",
+      "siteverify_status_code": 500,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "bad_response_400_strict",
+      "response": "0f962b9f-20de-4864-a4e2-75443a09db10",
+      "strict": true,
+      "siteverify_response": "<html><body>Something went horribly wrong</body></html>",
+      "siteverify_status_code": 400,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "empty_string_response_200",
+      "response": "1b0173a2-df8b-44f7-86ed-0b854b1a7f7d",
+      "strict": false,
+      "siteverify_response": "",
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "empty_string_response_200_strict",
+      "response": "14af7076-8579-4038-8369-7348afc47844",
+      "strict": true,
+      "siteverify_response": "",
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": false,
+        "was_able_to_verify": false,
+        "is_client_error": false
+      }
+    }
+  ]
+}
