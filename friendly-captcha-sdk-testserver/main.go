@@ -78,6 +78,13 @@ func serve(port int, testsPath string) {
 			return
 		}
 
+		// Check that `Frc-Sdk` header is present.
+		if r.Header.Get("Frc-Sdk") == "" {
+			fmt.Println("Missing Frc-Sdk header")
+			http.Error(w, "Missing Frc-Sdk header", http.StatusBadRequest)
+			return
+		}
+
 		var req wire.SiteverifyRequest
 		err := json.NewDecoder(r.Body).Decode(&req)
 		if err != nil {
@@ -93,7 +100,11 @@ func serve(port int, testsPath string) {
 		w.Header().Add("Content-Type", "application/json")
 
 		w.WriteHeader(testCase.SiteverifyStatusCode)
-		w.Write([]byte(testCase.SiteverifyResponse))
+		_, err = w.Write([]byte(testCase.SiteverifyResponse))
+		if err != nil {
+			fmt.Println("Failed to write response: ", err)
+			return
+		}
 	}
 
 	mux.HandleFunc(defaultSiteverifyEndpoint, handler)
@@ -104,7 +115,11 @@ func serve(port int, testsPath string) {
 			http.Error(w, fmt.Sprintf("Failed to marshal tests: %v", err), http.StatusInternalServerError)
 			return
 		}
-		w.Write(j)
+		_, err = w.Write(j)
+		if err != nil {
+			fmt.Println("Failed to write response: ", err)
+			return
+		}
 	})
 
 	fmt.Printf("Serving test cases version %d on port %d", tf.Version, port)
