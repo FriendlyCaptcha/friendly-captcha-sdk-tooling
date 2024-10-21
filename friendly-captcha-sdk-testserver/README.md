@@ -11,6 +11,10 @@ There are different ways to use this tool.
   ```
   go install github.com/friendlycaptcha/friendly-captcha-sdk-tooling/friendly-captcha-sdk-testserver@latest
   ```
+* Run it using Docker
+  ```
+  docker run -p 1090:1090 friendlycaptcha/sdk-testserver:latest
+  ```
 * Build it yourself (clone this repo, use `go run main.go`).
 
 ## Running the server
@@ -20,6 +24,9 @@ friendly-captcha-sdk-testserver serve
 
 # Alternative: build and run it locally
 go run main.go serve
+
+# With Docker
+docker run -p 1090:1090 friendlycaptcha/sdk-testserver:latest
 ```
 
 This starts the SDK test server on port `1090`.
