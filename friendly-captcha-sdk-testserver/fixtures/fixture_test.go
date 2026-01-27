@@ -23,8 +23,6 @@ type SiteverifyResponseSuccessData struct {
 type SiteverifyResponseSuccessDataChallenge struct {
 	Timestamp string `json:"timestamp"`
 	Origin    string `json:"origin"`
-
-	RiskIntelligence null.Value[RiskIntelligenceData] `json:"risk_intelligence,omitempty"`
 }
 
 type RiskIntelligenceData struct {
