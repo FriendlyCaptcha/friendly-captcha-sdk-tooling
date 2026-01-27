@@ -1,6 +1,8 @@
 package model
 
-import "encoding/json"
+import (
+	"encoding/json"
+)
 
 // What the SDK should conclude from the API response.
 type TestCaseExpectation struct {
