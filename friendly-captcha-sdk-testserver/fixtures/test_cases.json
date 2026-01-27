@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "tests": [
     {
       "name": "success",
@@ -8,17 +8,21 @@
       "siteverify_response": {
         "success": true,
         "data": {
+          "event_id": "ev_2b5ec269-2890-4df2-adbd-45be9974131e",
           "challenge": {
             "timestamp": "2023-08-04T13:01:25Z",
             "origin": "https://example.com"
-          }
+          },
+          "risk_intelligence": null
         }
       },
       "siteverify_status_code": 200,
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": "ev_2b5ec269-2890-4df2-adbd-45be9974131e",
+        "risk_intelligence_value": null
       }
     },
     {
@@ -36,7 +40,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -54,7 +59,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -72,7 +78,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -90,7 +97,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -108,7 +116,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -126,7 +135,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -144,7 +154,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -162,7 +173,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -172,17 +184,21 @@
       "siteverify_response": {
         "success": true,
         "data": {
+          "event_id": "ev_720d50fd-1e47-4a2d-bc94-f5eeda259f7b",
           "challenge": {
             "timestamp": "2023-08-04T13:01:25Z",
             "origin": "https://example.com"
-          }
+          },
+          "risk_intelligence": null
         }
       },
       "siteverify_status_code": 200,
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": "ev_720d50fd-1e47-4a2d-bc94-f5eeda259f7b",
+        "risk_intelligence_value": null
       }
     },
     {
@@ -200,7 +216,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -218,7 +235,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -236,7 +254,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -254,7 +273,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -272,7 +292,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -290,7 +311,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -308,7 +330,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -326,7 +349,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true
+        "is_client_error": true,
+        "event_id": ""
       }
     },
     {
@@ -338,7 +362,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -350,7 +375,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -362,7 +388,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -374,7 +401,8 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -386,7 +414,8 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false
+        "is_client_error": false,
+        "event_id": ""
       }
     },
     {
@@ -398,8 +427,75 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
+        "is_client_error": false,
+        "event_id": ""
+      }
+    },
+    {
+      "name": "success_with_risk_intelligence",
+      "response": "dc2fe149-04ce-45e5-a317-41425942abba",
+      "strict": false,
+      "siteverify_response": {
+        "success": true,
+        "data": {
+          "event_id": "ev_dc2fe149-04ce-45e5-a317-41425942abba",
+          "challenge": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "origin": "https://example.com"
+          },
+          "risk_intelligence": {
+            "risk_scores": {
+              "overall": 3,
+              "network": 3,
+              "browser": 2
+            },
+            "client": {
+              "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+              "browser": {
+                "id": "chrome"
+              }
+            }
+          }
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": true,
         "is_client_error": false
       }
+    },
+    {
+      "name": "success_with_risk_intelligence_with_null_client_browser",
+      "response": "c4b0031a-68c1-481e-a40e-fe526b0e0398",
+      "strict": false,
+      "siteverify_response": {
+        "success": true,
+        "data": {
+          "event_id": "ev_c4b0031a-68c1-481e-a40e-fe526b0e0398",
+          "challenge": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "origin": "https://example.com"
+          },
+          "risk_intelligence": {
+            "risk_scores": {
+              "overall": 1,
+              "network": 1,
+              "browser": 1
+            },
+            "client": {
+              "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+              "browser": null
+            }
+          }
+        }
+      },
+      "siteverify_status_code": 200,
+      "expectation": {
+        "should_accept": true,
+        "was_able_to_verify": true,
+        "is_client_error": false
     }
+  }
   ]
 }

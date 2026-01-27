@@ -15,8 +15,10 @@ import (
 // Usage: go run main.go serve --port 1090 --tests ./test_cases.json
 // Or just use the defaults: go run main.go serve
 
-const defaultSiteverifyEndpoint = "/api/v2/captcha/siteverify"
-const defaultTestsJSONEndpoint = "/api/v1/tests"
+const (
+	defaultSiteverifyEndpoint = "/api/v2/captcha/siteverify"
+	defaultTestsJSONEndpoint  = "/api/v1/tests"
+)
 
 var CLI struct {
 	Serve struct {
@@ -36,7 +38,6 @@ func main() {
 	default:
 		panic(ctx.Command())
 	}
-
 }
 
 func serve(port int, testsPath string) {
@@ -45,7 +46,7 @@ func serve(port int, testsPath string) {
 		panic(err)
 	}
 
-	if tf.Version != 1 {
+	if tf.Version != 2 {
 		panic("Unsupported test file version")
 	}
 
