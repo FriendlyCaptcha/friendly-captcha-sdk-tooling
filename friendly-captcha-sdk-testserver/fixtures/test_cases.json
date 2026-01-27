@@ -20,9 +20,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": "ev_2b5ec269-2890-4df2-adbd-45be9974131e",
-        "risk_intelligence_value": null
+        "is_client_error": false
       }
     },
     {
@@ -40,8 +38,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -59,8 +56,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -78,8 +74,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -97,8 +92,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -116,8 +110,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -135,8 +128,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -154,8 +146,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -173,8 +164,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -196,9 +186,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": "ev_720d50fd-1e47-4a2d-bc94-f5eeda259f7b",
-        "risk_intelligence_value": null
+        "is_client_error": false
       }
     },
     {
@@ -216,8 +204,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -235,8 +222,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -254,8 +240,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -273,8 +258,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -292,8 +276,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -311,8 +294,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -330,8 +312,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": true,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -349,8 +330,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": true,
-        "event_id": ""
+        "is_client_error": true
       }
     },
     {
@@ -362,8 +342,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -375,8 +354,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -388,8 +366,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -401,8 +378,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -414,8 +390,7 @@
       "expectation": {
         "should_accept": true,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
@@ -427,8 +402,7 @@
       "expectation": {
         "should_accept": false,
         "was_able_to_verify": false,
-        "is_client_error": false,
-        "event_id": ""
+        "is_client_error": false
       }
     },
     {
