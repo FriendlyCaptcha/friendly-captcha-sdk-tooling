@@ -1,6 +1,6 @@
 package wire
 
-type SiteverifyRequest struct {
+type CaptchaSiteverifyRequest struct {
 	// Optional, the sitekey that you want to make sure the puzzle was generated from.
 	//
 	// Not really used in this mock server.

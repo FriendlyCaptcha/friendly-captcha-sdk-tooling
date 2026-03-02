@@ -37,10 +37,14 @@ Next, run the tests that talk to this test server in the SDK implementation.
 You can pass some optional settings:
 
 * `--port 1234` run the server on a custom port.
-* `--tests some/path/my_test_cases_file.json` serve the test cases in a custom fixtures file.
+* `--siteverify-tests some/path/my_captcha_siteverify_test_cases_file.json` serve custom captcha siteverify test cases (embedded by default).
+* `--retrieve-tests some/path/my_risk_intelligence_retrieve_test_cases_file.json` serve custom risk intelligence retrieve test cases (embedded by default).
 
 ## Adding new sdk tests
-The expected behavior of the SDK is defined in the [test_cases.json](./fixtures/test_cases.json) file.
+The expected behavior of SDKs is defined in:
+
+* [captcha_siteverify_test_cases.json](./fixtures/captcha_siteverify_test_cases.json)
+* [risk_intelligence_retrieve_test_cases.json](./fixtures/risk_intelligence_retrieve_test_cases.json)
 
 ## Development
 

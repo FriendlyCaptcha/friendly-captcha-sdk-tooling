@@ -1,0 +1,141 @@
+{
+  "version": 1,
+  "tests": [
+    {
+      "name": "success",
+      "token": "dc2fe149-04ce-45e5-a317-41425942abba",
+      "retrieve_response": {
+        "success": true,
+        "data": {
+          "risk_intelligence": {
+            "risk_scores": {
+              "overall": 3,
+              "network": 3,
+              "browser": 2
+            },
+            "client": {
+              "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+              "browser": {
+                "id": "chrome"
+              }
+            }
+          },
+          "details": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "expires_at": "2023-08-04T13:06:25Z",
+            "num_uses": 1
+          }
+        }
+      },
+      "retrieve_status_code": 200,
+      "expectation": {
+        "was_able_to_retrieve": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "success_with_null_client_browser",
+      "token": "c4b0031a-68c1-481e-a40e-fe526b0e0398",
+      "retrieve_response": {
+        "success": true,
+        "data": {
+          "risk_intelligence": {
+            "risk_scores": {
+              "overall": 1,
+              "network": 1,
+              "browser": 1
+            },
+            "client": {
+              "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
+              "browser": null
+            }
+          },
+          "details": {
+            "timestamp": "2023-08-04T13:01:25Z",
+            "expires_at": "2023-08-04T13:06:25Z",
+            "num_uses": 1
+          }
+        }
+      },
+      "retrieve_status_code": 200,
+      "expectation": {
+        "was_able_to_retrieve": true,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "auth_required",
+      "token": "50aa9a4c-c42a-4086-b313-6f045af3a9c7",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_required",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 401,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "auth_invalid",
+      "token": "5c05b5d9-1e08-4331-93ef-10aded015949",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "auth_invalid",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 401,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "bad_request",
+      "token": "689ca2eb-f1e9-42e5-8245-2e8c9ecb1974",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "bad_request",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 400,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "token_expired",
+      "token": "c0cf28c8-891b-4643-989d-47899339e5e7",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "token_expired",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 400,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "bad_response_500",
+      "token": "12f35538-ed0e-43e4-9504-3379a22983bf",
+      "retrieve_response": "<html><body>Something went horribly wrong</body></html>",
+      "retrieve_status_code": 500,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_client_error": false
+      }
+    }
+  ]
+}
