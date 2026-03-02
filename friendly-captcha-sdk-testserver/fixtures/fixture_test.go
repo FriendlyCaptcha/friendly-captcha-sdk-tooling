@@ -7,20 +7,20 @@ import (
 	"github.com/guregu/null/v6"
 )
 
-type SiteverifyResponse struct {
-	Success bool                          `json:"success"`
-	Data    SiteverifyResponseSuccessData `json:"data,omitempty"`
+type CaptchaSiteverifyResponse struct {
+	Success bool                                 `json:"success"`
+	Data    CaptchaSiteverifyResponseSuccessData `json:"data,omitempty"`
 }
 
-type SiteverifyResponseSuccessData struct {
+type CaptchaSiteverifyResponseSuccessData struct {
 	EventID string `json:"event_id"`
 
-	Challenge SiteverifyResponseSuccessDataChallenge `json:"challenge"`
+	Challenge CaptchaSiteverifyResponseSuccessDataChallenge `json:"challenge"`
 
 	RiskIntelligence null.Value[RiskIntelligenceData] `json:"risk_intelligence"`
 }
 
-type SiteverifyResponseSuccessDataChallenge struct {
+type CaptchaSiteverifyResponseSuccessDataChallenge struct {
 	Timestamp string `json:"timestamp"`
 	Origin    string `json:"origin"`
 }
@@ -52,15 +52,39 @@ type RiskIntelligenceDataClientBrowser struct {
 	ID string `json:"id"`
 }
 
-func TestFixtures(t *testing.T) {
+type RiskIntelligenceRetrieveResponse struct {
+	Success bool                                        `json:"success"`
+	Data    RiskIntelligenceRetrieveResponseSuccessData `json:"data,omitempty"`
+}
+
+type RiskIntelligenceRetrieveResponseSuccessData struct {
+	RiskIntelligence null.Value[RiskIntelligenceData]        `json:"risk_intelligence"`
+	Details          RiskIntelligenceRetrieveResponseDetails `json:"details"`
+}
+
+type RiskIntelligenceRetrieveResponseDetails struct {
+	Timestamp string `json:"timestamp"`
+	ExpiresAt string `json:"expires_at"`
+	NumUses   int64  `json:"num_uses"`
+}
+
+func TestCaptchaSiteverifyFixtures(t *testing.T) {
 	t.Parallel()
 
-	testCases, err := Load("")
+	testCases, err := LoadCaptchaSiteverify("")
 	if err != nil {
-		t.Fatalf("Failed to load embedded test cases: %v", err)
+		t.Fatalf("Failed to load embedded siteverify test cases: %v", err)
 	}
 
-	// For each fixture make sure it has a name, response and expectation.
+	invalidJSONCases := map[string]bool{
+		"bad_response_200":                 true,
+		"bad_response_200_strict":          true,
+		"bad_response_500":                 true,
+		"bad_response_400_strict":          true,
+		"empty_string_response_200":        true,
+		"empty_string_response_200_strict": true,
+	}
+
 	for i, tc := range testCases.Tests {
 		if tc.Name == "" {
 			t.Errorf("Test case %d has an empty name", i)
@@ -69,46 +93,84 @@ func TestFixtures(t *testing.T) {
 			t.Errorf("Test case %d (%s) has an empty response", i, tc.Name)
 		}
 
-		// Parse as SiteverifyResponse to ensure it's valid JSON.
-		var svr SiteverifyResponse
+		var svr CaptchaSiteverifyResponse
 		err := json.Unmarshal(tc.SiteverifyResponse, &svr)
 		if err != nil {
-			// Some responses are completely invalid JSON (e.g., HTML error pages).
-			// We only validate the ones that are supposed to be valid JSON.
-
-			// We hardcode those that we expect to fail to parse:
-			invalidJSONCases := map[string]bool{
-				"bad_response_200":                 true,
-				"bad_response_200_strict":          true,
-				"bad_response_500":                 true,
-				"bad_response_400_strict":          true,
-				"empty_string_response_200":        true,
-				"empty_string_response_200_strict": true,
-			}
 			if !invalidJSONCases[tc.Name] {
 				t.Errorf("Test case %d (%s) has invalid siteverify_response JSON: %v", i, tc.Name, err)
 			}
-			return
-		}
-
-		if !svr.Success { // For non-success cases we don't validate further.
 			continue
 		}
 
-		ri := svr.Data.RiskIntelligence
+		if !svr.Success {
+			continue
+		}
+		validateRiskIntelligenceData(t, i, tc.Name, svr.Data.RiskIntelligence)
+	}
+}
 
-		// If risk intelligence data is present, ensure it has expected fields.
-		if ri.Valid {
-			if ri.V.Client.HeaderUserAgent == "" {
-				t.Errorf("Test case %d (%s) has risk intelligence data with empty client header_user_agent", i, tc.Name)
-			}
+func TestRiskIntelligenceRetrieveFixtures(t *testing.T) {
+	t.Parallel()
 
-			if ri.V.Client.Browser.Valid {
-				if ri.V.Client.Browser.V.ID == "" {
-					t.Errorf("Test case %d (%s) has risk intelligence data with empty browser id", i, tc.Name)
-				}
-			}
+	testCases, err := LoadRiskIntelligenceRetrieve("")
+	if err != nil {
+		t.Fatalf("Failed to load embedded retrieve test cases: %v", err)
+	}
+
+	invalidJSONCases := map[string]bool{
+		"bad_response_200":          true,
+		"bad_response_500":          true,
+		"empty_string_response_200": true,
+	}
+
+	for i, tc := range testCases.Tests {
+		if tc.Name == "" {
+			t.Errorf("Test case %d has an empty name", i)
+		}
+		if tc.Token == "" {
+			t.Errorf("Test case %d (%s) has an empty token", i, tc.Name)
 		}
 
+		var rr RiskIntelligenceRetrieveResponse
+		err := json.Unmarshal(tc.RiskIntelligenceRetrieveResponse, &rr)
+		if err != nil {
+			if !invalidJSONCases[tc.Name] {
+				t.Errorf("Test case %d (%s) has invalid retrieve_response JSON: %v", i, tc.Name, err)
+			}
+			continue
+		}
+
+		if !rr.Success {
+			continue
+		}
+
+		if rr.Data.Details.Timestamp == "" {
+			t.Errorf("Test case %d (%s) has empty details.timestamp", i, tc.Name)
+		}
+		if rr.Data.Details.ExpiresAt == "" {
+			t.Errorf("Test case %d (%s) has empty details.expires_at", i, tc.Name)
+		}
+		validateRiskIntelligenceData(t, i, tc.Name, rr.Data.RiskIntelligence)
+	}
+}
+
+func validateRiskIntelligenceData(
+	t *testing.T,
+	testIndex int,
+	testName string,
+	ri null.Value[RiskIntelligenceData],
+) {
+	t.Helper()
+
+	if !ri.Valid {
+		return
+	}
+
+	if ri.V.Client.HeaderUserAgent == "" {
+		t.Errorf("Test case %d (%s) has risk intelligence data with empty client header_user_agent", testIndex, testName)
+	}
+
+	if ri.V.Client.Browser.Valid && ri.V.Client.Browser.V.ID == "" {
+		t.Errorf("Test case %d (%s) has risk intelligence data with empty browser id", testIndex, testName)
 	}
 }
