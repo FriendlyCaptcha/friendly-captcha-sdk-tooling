@@ -52,11 +52,11 @@ func main() {
 func serve(port int, siteverifytestsPath string, retrieveTestsPath string) {
 	captchaSiteverifyTestsFile, err := fixtures.LoadCaptchaSiteverify(siteverifytestsPath)
 	if err != nil {
-		panic(err)
+		panic("failed to load captcha siteverify test cases: " + err.Error())
 	}
 	riskIntelligenceRetrieveTestsFile, err := fixtures.LoadRiskIntelligenceRetrieve(retrieveTestsPath)
 	if err != nil {
-		panic(err)
+		panic("failed to load risk intelligence retrieve test cases: " + err.Error())
 	}
 
 	if captchaSiteverifyTestsFile.Version != expectedCaptchaSiteverifyTestsFileVersion {
