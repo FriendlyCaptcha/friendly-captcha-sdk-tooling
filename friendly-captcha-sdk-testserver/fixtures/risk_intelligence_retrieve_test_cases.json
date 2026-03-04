@@ -16,8 +16,14 @@
             "client": {
               "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
               "browser": {
-                "id": "chrome"
+                "id": "chrome",
+                "name": "Chrome",
+                "version": "91.0.4472.124",
+                "release_date": "2021-06-24"
               }
+            },
+            "network": {
+              "ip": "127.0.0.1"
             }
           },
           "details": {
@@ -48,6 +54,9 @@
             "client": {
               "header_user_agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36",
               "browser": null
+            },
+            "network": {
+              "ip": "127.0.0.1"
             }
           },
           "details": {
