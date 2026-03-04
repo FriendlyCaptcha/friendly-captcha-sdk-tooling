@@ -24,8 +24,8 @@ const (
 	defaultCaptchaSiteverifyTestsJSONEndpoint        = "/api/v1/captcha/siteverifyTests"
 	defaultRiskIntelligenceRetrieveTestsJSONEndpoint = "/api/v1/riskIntelligence/retrieveTests"
 
-	expectedCaptchaSiteverifyTestsFileVersion        = 2
-	expectedRiskIntelligenceRetrieveTestsFileVersion = 1
+	expectedCaptchaSiteverifyTestsFileVersion        = 3
+	expectedRiskIntelligenceRetrieveTestsFileVersion = 2
 )
 
 var CLI struct {
