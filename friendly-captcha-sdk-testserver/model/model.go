@@ -28,6 +28,7 @@ type CaptchaSiteverifyTestCase struct {
 
 type RiskIntelligenceRetrieveTestCaseExpectation struct {
 	WasAbleToRetrieve bool `json:"was_able_to_retrieve"`
+	IsValid           bool `json:"is_valid"`
 	IsClientError     bool `json:"is_client_error"`
 }
 

@@ -1,5 +1,5 @@
 {
-  "version": 2,
+  "version": 3,
   "tests": [
     {
       "name": "success",
@@ -7,6 +7,7 @@
       "retrieve_response": {
         "success": true,
         "data": {
+          "event_id": "ev_dc2fe149-04ce-45e5-a317-41425942abba",
           "risk_intelligence": {
             "risk_scores": {
               "overall": 2,
@@ -104,16 +105,18 @@
               }
             }
           },
-          "details": {
+          "token": {
             "timestamp": "2023-08-04T13:01:25Z",
             "expires_at": "2023-08-04T13:06:25Z",
-            "num_uses": 1
+            "num_uses": 1,
+            "origin": "https://example.com"
           }
         }
       },
       "retrieve_status_code": 200,
       "expectation": {
         "was_able_to_retrieve": true,
+        "is_valid": true,
         "is_client_error": false
       }
     },
@@ -123,6 +126,7 @@
       "retrieve_response": {
         "success": true,
         "data": {
+          "event_id": "ev_c4b0031a-68c1-481e-a40e-fe526b0e0398",
           "risk_intelligence": {
             "risk_scores": {
               "overall": 1,
@@ -137,16 +141,18 @@
               "ip": "127.0.0.1"
             }
           },
-          "details": {
+          "token": {
             "timestamp": "2023-08-04T13:01:25Z",
             "expires_at": "2023-08-04T13:06:25Z",
-            "num_uses": 1
+            "num_uses": 1,
+            "origin": "https://example.com"
           }
         }
       },
       "retrieve_status_code": 200,
       "expectation": {
         "was_able_to_retrieve": true,
+        "is_valid": true,
         "is_client_error": false
       }
     },
@@ -163,6 +169,7 @@
       "retrieve_status_code": 401,
       "expectation": {
         "was_able_to_retrieve": false,
+        "is_valid": false,
         "is_client_error": true
       }
     },
@@ -179,6 +186,7 @@
       "retrieve_status_code": 401,
       "expectation": {
         "was_able_to_retrieve": false,
+        "is_valid": false,
         "is_client_error": true
       }
     },
@@ -195,6 +203,24 @@
       "retrieve_status_code": 400,
       "expectation": {
         "was_able_to_retrieve": false,
+        "is_valid": false,
+        "is_client_error": true
+      }
+    },
+    {
+      "name": "token_missing",
+      "token": "",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "token_missing",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 400,
+      "expectation": {
+        "was_able_to_retrieve": false,
+        "is_valid": false,
         "is_client_error": true
       }
     },
@@ -208,10 +234,28 @@
           "detail": ""
         }
       },
-      "retrieve_status_code": 400,
+      "retrieve_status_code": 200,
       "expectation": {
-        "was_able_to_retrieve": false,
-        "is_client_error": true
+        "was_able_to_retrieve": true,
+        "is_valid": false,
+        "is_client_error": false
+      }
+    },
+    {
+      "name": "token_invalid",
+      "token": "14af7076-8579-4038-8369-7348afc47844",
+      "retrieve_response": {
+        "success": false,
+        "error": {
+          "error_code": "token_invalid",
+          "detail": ""
+        }
+      },
+      "retrieve_status_code": 200,
+      "expectation": {
+        "was_able_to_retrieve": true,
+        "is_valid": false,
+        "is_client_error": false
       }
     },
     {
@@ -221,6 +265,7 @@
       "retrieve_status_code": 500,
       "expectation": {
         "was_able_to_retrieve": false,
+        "is_valid": false,
         "is_client_error": false
       }
     }
